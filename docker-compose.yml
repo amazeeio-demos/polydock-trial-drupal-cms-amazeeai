@@ -8,7 +8,7 @@ x-volumes:
 x-environment:
   &default-environment
     # Route that should be used locally, if you are using pygmy, this route *must* end with .docker.amazee.io
-    LAGOON_ROUTE: &default-url http://${COMPOSE_PROJECT_NAME:-drupal-cms-example}.docker.amazee.io
+    LAGOON_ROUTE: &default-url http://drupal-cms-ai.docker.amazee.io
     # Uncomment if you like to have the system behave like in production
     #LAGOON_ENVIRONMENT_TYPE: production
     # Uncomment to enable xdebug and then restart via `docker-compose up -d`
@@ -32,7 +32,7 @@ services:
       context: .
       target: cli
       dockerfile: .lagoon/Dockerfile
-    image: &cli-image ${COMPOSE_PROJECT_NAME:-drupal-cms-example}-cli # this image will be reused as `CLI_IMAGE` in subsequent Docker builds
+    image: &cli-image drupal-cms-ai-cli # this image will be reused as `CLI_IMAGE` in subsequent Docker builds
     labels:
       # Lagoon Labels
       lagoon.type: cli-persistent
