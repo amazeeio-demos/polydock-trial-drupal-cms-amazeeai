@@ -6,10 +6,10 @@ source /lagoon/entrypoints/50-dotenv.sh
 # Generate some additional enviornment variables
 source /lagoon/entrypoints/55-generate-env.sh
 
-if [ ! -z "$SERVICE_NAME" ]; then
-  RUN_CONTEXT=$RUN_CONTEXT.$SERVICE_NAME
-  if [ ! -z "$SERVICE_NAME" ]; then
-    RUN_CONTEXT=$RUN_CONTEXT.$SERVICE_NAME.$LAGOON_KUBERNETES 
+if [ -z "$RUN_CONTEXT" && ! -z "$SERVICE_NAME" ]; then
+  RUN_CONTEXT="$SERVICE_NAME"
+  if [ ! -z "$LAGOON_KUBERNETES" ]; then
+    RUN_CONTEXT=$SERVICE_NAME.$LAGOON_KUBERNETES 
   fi
 fi
 
