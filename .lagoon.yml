@@ -15,7 +15,7 @@ tasks:
     #     service: cli
     - run:
         name: set up drupal-cms
-        command: if ! [[ $(drush status --field=Database) == "Connected" ]]; then drush si -y; fi
+        command: if [[ $(drush status --field=Database) != "Connected" ]]; then drush si -y; fi
         service: cli
     - run:
         name: drush updb
