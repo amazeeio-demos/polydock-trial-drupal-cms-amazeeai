@@ -4,6 +4,10 @@ FLAG_FILE="/app/scaffolding_done.flag"
 
 cd /app
 
+echo "Here are the variables"
+export
+echo "Done with the variables"
+
 # Check if the flag file exists
 if [ ! -f "$FLAG_FILE" ]; then
     echo "*** NO SCAFFOLD FILE FOUND ***"
