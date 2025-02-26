@@ -16,7 +16,7 @@ tasks:
     - run:
         name: set up drupal-cms
         command: |
-          if ! [[ "$(drush status --field=Database)" == "Connected" ]]; then drush updb -y; fi
+          if ! [[ "$(drush status --field=Database)" == "Connected" ]]; then 
             while [ ! -f "/app/scaffolding_done.flag" ]; do
               echo "Waiting for scaffolding to complete"
               sleep 2  
@@ -24,7 +24,7 @@ tasks:
 
             echo "Scaffolding complete! Running site install..."
             drush -y si 
-          fi
+          fi;
         service: cli
     - run:
         name: drush updb
